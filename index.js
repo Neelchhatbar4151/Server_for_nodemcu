@@ -12,6 +12,17 @@ R.get("/", (req, res) => {
 
 const add = async (ce, fa) => {
       try {
+            const number = await User.countDocuments();
+            if (number >= 30) {
+                  const data = await User.find().sort({ _id: 1 }).limit(1)
+                  const id = data[0]._id;
+                  console.log(data)
+                  User.deleteOne({ _id:id }).then(function () {
+                        console.log("Deleted First Record.."); // Success
+                  }).catch(function (error) {
+                        console.log(error); // Failure
+                  });
+            }
             const user = new User({ Celsius: ce, Fahrenheit: fa });
             await user.save();
       } catch (error) {
