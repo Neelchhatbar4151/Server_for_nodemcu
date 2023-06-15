@@ -6,6 +6,10 @@ const UserScheme = new Mongoose.Schema({
       },
       Fahrenheit: {
             type: Number,
+      },
+      Time: {
+            type: Date,
+            default:Date.now()
       }
 })
 
