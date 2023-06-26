@@ -9,7 +9,7 @@ const UserScheme = new Mongoose.Schema({
       },
       Time: {
             type: Date,
-            default:Date.now()
+            default: new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
       }
 })
 
